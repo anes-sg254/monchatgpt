@@ -23,3 +23,28 @@ def create_conversation(conversation: ConversationCreate):
         return {"error": str(e)}
     finally:
         conn.close()
+
+
+@router.get("/user/{user_id}")
+def get_user_conversations(user_id: int):
+    conn = get_db_connection()
+    if not conn:
+        return {"error": "Connexion à la base impossible"}
+
+    try:
+        with conn.cursor() as cursor:
+            cursor.execute(
+                "SELECT id, user_id, created_at FROM Conversations WHERE user_id = %s ORDER BY created_at DESC",
+                (user_id,),
+            )
+            conversations = cursor.fetchall()
+
+        if not conversations:
+            return {"error": "Aucune conversation trouvée pour cet utilisateur"}
+
+        return conversations
+    except Exception as e:
+        return {"error": str(e)}
+    finally:
+        conn.close()
+

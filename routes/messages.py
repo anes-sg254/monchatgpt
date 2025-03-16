@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from database import get_db_connection
 from models import MessageCreate
-from services.ai_service import get_ai_response
+# from services.ai_service import get_ai_response
 from typing import List
 import psycopg2
 
@@ -52,7 +52,7 @@ def get_messages(conversation_id: int):
         conn.close()
 
 
-@router.post("/chat")
-def chat_with_ai(message: MessageCreate):
-    ai_response = get_ai_response(message.content)
-    return {"response": ai_response}
+# @router.post("/chat")
+# def chat_with_ai(message: MessageCreate):
+#     ai_response = get_ai_response(message.content)
+#     return {"response": ai_response}
