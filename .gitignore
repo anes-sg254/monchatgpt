@@ -1,0 +1,28 @@
+# Environnement Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+env/
+venv/
+ENV/
+.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Databases locales (optionnel si tu en génères)
+*.sqlite3
+
+# Frontend build (si dans le même projet)
+dist/
+build/
+node_modules/

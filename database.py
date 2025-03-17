@@ -1,20 +1,19 @@
 import psycopg2
-from psycopg2.extras import RealDictCursor
+import os
+from dotenv import load_dotenv
 
-# Paramètres de connexion
-DATABASE_CONFIG = {
-    "host": "localhost",
-    "dbname": "chatgpt",
-    "user": "postgres",
-    "password": "msprepsi",
-    "port": "5432",
-}
+load_dotenv()
 
-# Fonction pour se connecter à PostgreSQL
 def get_db_connection():
     try:
-        conn = psycopg2.connect(**DATABASE_CONFIG, cursor_factory=RealDictCursor)
+        conn = psycopg2.connect(
+            host=os.getenv("DB_HOST"),
+            dbname=os.getenv("DB_NAME"),
+            user=os.getenv("DB_USER"),
+            password=os.getenv("DB_PASSWORD"),
+            port=os.getenv("DB_PORT")
+        )
         return conn
     except Exception as e:
-        print(f"Erreur de connexion à la base de données : {e}")
+        print(f"Erreur de connexion : {e}")
         return None
