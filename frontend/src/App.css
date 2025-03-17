@@ -1,74 +1,89 @@
-/* Styles globaux */
+/* Global */
 body {
   margin: 0;
-  padding: 0;
+  background-color: #0d1117;
+  color: white;
   font-family: Arial, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #f4f4f9;
 }
-
-/* Conteneur principal */
-.app-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.full-screen {
+  width: 100vw;
   height: 100vh;
-  flex-direction: column;
-  width: 100%;
-  max-width: 800px;
-  padding: 20px;
-}
-
-/* Conteneur du chatbot */
-.chat-container {
-  width: 100%;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
 }
 
-/* Zone d'affichage des messages */
-.chat-box {
-  height: 350px;
+/* Header */
+.header {
+  width: 100%;
+  background-color: #1f2937;
+  padding: 15px;
+  text-align: center;
+  color: #60a5fa;
+  border-bottom: 1px solid #374151;
+}
+
+/* Layout principal */
+.app-layout {
+  display: flex;
+  flex: 1;
+}
+
+/* Sidebar Historique */
+.sidebar {
+  width: 200px;
+  background: #1e293b;
+  padding: 15px;
+  border-right: 1px solid #374151;
   overflow-y: auto;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 10px;
-  margin-bottom: 10px;
+}
+
+.history-item {
+  padding: 8px;
+  margin-bottom: 5px;
+  background-color: #0f172a;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.history-item.selected {
+  background-color: #2563eb;
+}
+
+/* Zone de Chat */
+.chat-main {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  background-color: #0d1117;
+  padding: 15px;
 }
 
-/* Style des messages */
+.chat-box {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+
 .message {
-  max-width: 80%;
+  margin-bottom: 10px;
   padding: 10px;
-  border-radius: 10px;
-  word-wrap: break-word;
+  border-radius: 6px;
+  max-width: 70%;
 }
 
-/* Messages de l'utilisateur */
 .user-message {
+  background-color: #1d4ed8;
   align-self: flex-end;
-  background-color: #007bff;
   color: white;
 }
 
-/* Messages de l'IA */
 .ai-message {
+  background-color: #374151;
   align-self: flex-start;
-  background-color: #e0e0e0;
-  color: black;
+  color: white;
 }
 
-/* Zone d'entrée */
+/* Input zone */
 .input-container {
   display: flex;
   gap: 10px;
@@ -77,43 +92,17 @@ body {
 .input-container input {
   flex: 1;
   padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 4px;
+  border: 1px solid #374151;
+  background-color: #1e293b;
+  color: white;
 }
 
 .input-container button {
-  background-color: #007bff;
-  color: white;
+  padding: 10px 20px;
+  background-color: #2563eb;
   border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
+  border-radius: 4px;
+  color: white;
   cursor: pointer;
-  transition: background 0.3s;
-}
-
-.input-container button:hover {
-  background-color: #0056b3;
-}
-
-/* Section historique des conversations */
-.conversation-history {
-  margin-top: 20px;
-  padding: 10px;
-  background: #f9f9f9;
-  border-radius: 8px;
-}
-
-.history-item {
-  padding: 10px;
-  margin-bottom: 10px;
-  background: #e9ecef;
-  border-radius: 8px;
-}
-
-.history-item p {
-  margin: 5px 0;
-}
-
-.history-item strong {
-  font-weight: bold;
 }

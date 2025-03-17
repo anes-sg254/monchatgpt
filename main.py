@@ -1,8 +1,18 @@
 from fastapi import FastAPI
 from routes import users, conversations, messages
+from fastapi.middleware.cors import CORSMiddleware
 import inspect
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # ou ["http://localhost:5173"] si tu veux limiter
+    allow_credentials=True,
+    allow_methods=["*"],  # Autorise POST, GET, OPTIONS, etc.
+    allow_headers=["*"],  # Autorise tout (Content-Type, Authorization, etc.)
+)
+
 
 # Inclusion des routes
 app.include_router(users.router, prefix="/users", tags=["Users"])
